@@ -55,7 +55,7 @@ RUN apt-get update -y && \
     apt-get clean
 
 RUN pip install pip --upgrade
-RUN pip install --upgrade pycrypto cryptography
+RUN pip install --upgrade pycrypto 'cryptography<2.3.0'
 
 # helpful things taken from the ubuntu-upstart Dockerfile:
 # https://github.com/tianon/dockerfiles/blob/4d24a12b54b75b3e0904d8a285900d88d3326361/sbin-init/ubuntu/upstart/14.04/Dockerfile
