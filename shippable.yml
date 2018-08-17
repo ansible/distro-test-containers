@@ -1,0 +1,17 @@
+language: python
+
+env:
+  - C: centos6
+  - C: centos7
+  - C: fedora24
+  - C: fedora25
+  - C: fedora26py3
+  - C: fedora27py3
+  - C: opensuse42.3
+  - C: ubuntu1404
+  - C: ubuntu1604
+  - C: ubuntu1604py3
+
+build:
+  ci:
+    - docker build ${C}-test-container
