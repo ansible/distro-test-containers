@@ -54,7 +54,7 @@ RUN apt-get update -y && \
     && \
     apt-get clean
 
-RUN pip install pip --upgrade
+RUN pip install pip==9.0.3 --upgrade
 RUN pip install --upgrade pycrypto 'cryptography<2.3.0'
 
 # helpful things taken from the ubuntu-upstart Dockerfile:
