@@ -1,4 +1,4 @@
-FROM fedora:26
+FROM fedora:28
 
 RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; done); \
 rm -f /lib/systemd/system/multi-user.target.wants/*; \
@@ -10,10 +10,11 @@ rm -f /lib/systemd/system/basic.target.wants/*; \
 rm -f /lib/systemd/system/anaconda.target.wants/*;
 
 RUN dnf clean all && \
-    dnf -y upgrade && \
     dnf -y --setopt=install_weak_deps=false install \
     acl \
+    asciidoc \
     bzip2 \
+    dbus-python \
     file \
     findutils \
     gcc \
@@ -24,27 +25,28 @@ RUN dnf clean all && \
     libffi-devel \
     make \
     mariadb-server \
+    mercurial \
+    MySQL-python \
     openssh-clients \
     openssh-server \
     openssl-devel \
     pass \
     procps \
-    python3-cryptography \
-    python3-dbus \
-    python3-devel \
-    python3-dnf \
-    python3-httplib2 \
-    python3-jinja2 \
-    python3-lxml \
-    python3-mock \
-    python3-mysql \
-    python3-nose \
-    python3-paramiko \
-    python3-passlib \
-    python3-pip \
-    python3-PyYAML \
-    python3-setuptools \
-    python3-virtualenv \
+    python-cryptography \
+    python-devel \
+    python-httplib2 \
+    python-jinja2 \
+    python-keyczar \
+    python-lxml \
+    python-mock \
+    python-nose \
+    python-paramiko \
+    python-passlib \
+    python-pip \
+    python-setuptools \
+    python-virtualenv \
+    python2-dnf \
+    PyYAML \
     rpm-build \
     rubygems \
     sshpass \
@@ -53,6 +55,7 @@ RUN dnf clean all && \
     tar \
     unzip \
     which \
+    yum \
     zip \
     && \
     dnf clean all
@@ -67,6 +70,6 @@ RUN ssh-keygen -q -t dsa -N '' -f /etc/ssh/ssh_host_dsa_key && \
     ssh-keygen -q -t rsa -N '' -f /root/.ssh/id_rsa && \
     cp /root/.ssh/id_rsa.pub /root/.ssh/authorized_keys && \
     for key in /etc/ssh/ssh_host_*_key.pub; do echo "localhost $(cat ${key})" >> /root/.ssh/known_hosts; done
-RUN pip3 install coverage junit-xml
+RUN pip install coverage junit-xml
 ENV container=docker
 CMD ["/usr/sbin/init"]

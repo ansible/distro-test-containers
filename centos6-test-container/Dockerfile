@@ -47,7 +47,7 @@ RUN yum clean all && \
     rpm -e --nodeps python-crypto && \
     yum clean all
 
-RUN pip install --upgrade pycrypto 'cryptography<2.0.0'
+RUN pip install --upgrade pycrypto 'cryptography<2.0.0' 'pycparser<2.19'
 
 RUN /bin/sed -i -e 's/^\(Defaults\s*requiretty\)/#--- \1/'  /etc/sudoers
 RUN mkdir /etc/ansible/
