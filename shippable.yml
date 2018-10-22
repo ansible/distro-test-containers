@@ -11,6 +11,7 @@ env:
   - C: ubuntu1404
   - C: ubuntu1604
   - C: ubuntu1604py3
+  - C: ubuntu1804
 
 build:
   ci:
