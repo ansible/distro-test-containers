@@ -7,7 +7,9 @@ rm -f /lib/systemd/system/local-fs.target.wants/*; \
 rm -f /lib/systemd/system/sockets.target.wants/*udev*; \
 rm -f /lib/systemd/system/sockets.target.wants/*initctl*; \
 rm -f /lib/systemd/system/basic.target.wants/*; \
-rm -f /lib/systemd/system/anaconda.target.wants/*;
+rm -f /lib/systemd/system/anaconda.target.wants/*; \
+# dnf upgrade will upgrade dnf-yum and it remove /etc/yum.conf take a backup and restore after the upgrade
+cp /etc/yum.conf /etc/yum.conf.bak;
 
 RUN dnf clean all && \
     dnf -y upgrade && \
@@ -55,7 +57,9 @@ RUN dnf clean all && \
     which \
     zip \
     && \
-    dnf clean all
+    dnf clean all \
+    && \
+    mv /etc/yum.conf.bak /etc/yum.conf -f
 
 RUN localedef --quiet -c -i en_US -f UTF-8 en_US.UTF-8
 RUN /usr/bin/sed -i -e 's/^\(Defaults\s*requiretty\)/#--- \1/'  /etc/sudoers
