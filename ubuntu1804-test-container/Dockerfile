@@ -48,6 +48,7 @@ RUN apt-get update -y && \
     sshpass \
     subversion \
     sudo \
+    systemd \
     tzdata \
     unzip \
     virtualenv \
@@ -66,4 +67,4 @@ RUN ssh-keygen -m PEM -q -t rsa -N '' -f /root/.ssh/id_rsa && \
 VOLUME /sys/fs/cgroup /run/lock /run /tmp
 RUN pip3 install coverage junit-xml python3-keyczar
 ENV container=docker
-CMD ["/sbin/init"]
+CMD ["/lib/systemd/systemd"]
