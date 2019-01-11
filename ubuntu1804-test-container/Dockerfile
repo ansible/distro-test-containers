@@ -57,6 +57,7 @@ RUN apt-get update -y && \
     && \
     apt-get clean
 
+RUN ln -s /lib/systemd/systemd /sbin/init
 RUN rm /etc/apt/apt.conf.d/docker-clean
 RUN mkdir /etc/ansible/
 RUN /bin/echo -e "[local]\nlocalhost ansible_connection=local" > /etc/ansible/hosts
@@ -67,4 +68,4 @@ RUN ssh-keygen -m PEM -q -t rsa -N '' -f /root/.ssh/id_rsa && \
 VOLUME /sys/fs/cgroup /run/lock /run /tmp
 RUN pip3 install coverage junit-xml python3-keyczar
 ENV container=docker
-CMD ["/lib/systemd/systemd"]
+CMD ["/sbin/init"]
