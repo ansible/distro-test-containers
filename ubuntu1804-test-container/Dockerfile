@@ -48,6 +48,7 @@ RUN apt-get update -y && \
     sshpass \
     subversion \
     sudo \
+    systemd \
     tzdata \
     unzip \
     virtualenv \
@@ -56,6 +57,7 @@ RUN apt-get update -y && \
     && \
     apt-get clean
 
+RUN ln -s /lib/systemd/systemd /sbin/init
 RUN rm /etc/apt/apt.conf.d/docker-clean
 RUN mkdir /etc/ansible/
 RUN /bin/echo -e "[local]\nlocalhost ansible_connection=local" > /etc/ansible/hosts
