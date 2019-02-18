@@ -5,10 +5,9 @@ RUN zypper --non-interactive --gpg-auto-import-keys refresh --services --force &
     zypper --non-interactive install --auto-agree-with-licenses --no-recommends \
     acl \
     apache2 \
-    asciidoc \
     bzip2 \
     curl \
-    dbus-1-python \
+    dbus-1-python3 \
     gcc \
     git \
     glibc-i18ndata \
@@ -17,25 +16,24 @@ RUN zypper --non-interactive --gpg-auto-import-keys refresh --services --force &
     lsb-release \
     make \
     mariadb \
-    mercurial \
     openssh \
     postgresql-server \
-    python-cryptography \
-    python-devel \
-    python-httplib2 \
-    python-jinja2 \
-    python-keyczar \
-    python-lxml \
-    python-mock \
-    python-PyMySQL \
-    python-nose \
-    python-paramiko \
-    python-passlib \
-    python-pip \
-    python-psycopg2 \
-    python-PyYAML \
-    python-setuptools \
-    python-virtualenv \
+    python3-cryptography \
+    python3-devel \
+    python3-httplib2 \
+    python3-Jinja2 \
+    python3-keyczar \
+    python3-lxml \
+    python3-mock \
+    python3-PyMySQL \
+    python3-nose \
+    python3-paramiko \
+    python3-passlib \
+    python3-pip \
+    python3-psycopg2 \
+    python3-PyYAML \
+    python3-setuptools \
+    python3-virtualenv \
     rpm-build \
     ruby \
     sshpass \
