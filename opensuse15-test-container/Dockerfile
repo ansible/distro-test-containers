@@ -32,6 +32,7 @@ RUN zypper --non-interactive --gpg-auto-import-keys refresh --services --force &
     python3-pip \
     python3-psycopg2 \
     python3-PyYAML \
+    python3-selinux \
     python3-setuptools \
     python3-virtualenv \
     rpm-build \
