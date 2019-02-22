@@ -8,6 +8,8 @@ env:
   - C: fedora28
   - C: fedora29
   - C: opensuse42.3
+  - C: opensuse15py2
+  - C: opensuse15
   - C: ubuntu1404
   - C: ubuntu1604
   - C: ubuntu1604py3
