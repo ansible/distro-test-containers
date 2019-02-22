@@ -59,13 +59,6 @@ rm -f ${LIBSYSTEMD}/basic.target.wants/*;
 # don't create systemd-session for ssh connections
 RUN sed -i /pam_systemd/d /etc/pam.d/common-session-pc
 
-# need to create the nobody user and group as it's used in some Ansible tests
-# this user exists in the OpenSUSE Leap 15.0 VM it's just removed in the base contianer
-RUN groupadd -g 65534 nobody && \
-    useradd nobody -d /var/lib/nobody -s /bin/bash -c nobody -u 65534 -g 65534 && \
-    mkdir /var/lib/nobody && \
-    chown nobody /var/lib/nobody
-
 RUN mkdir /etc/ansible/
 RUN /usr/bin/echo -e '[local]\nlocalhost ansible_connection=local' > /etc/ansible/hosts
 VOLUME /sys/fs/cgroup /run /tmp
