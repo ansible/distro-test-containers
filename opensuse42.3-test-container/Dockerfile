@@ -30,7 +30,6 @@ RUN zypper --non-interactive --gpg-auto-import-keys refresh --services --force &
     python-mock \
     python-MySQL-python \
     python-nose \
-    python-paramiko \
     python-passlib \
     python-pip \
     python-psycopg2 \
