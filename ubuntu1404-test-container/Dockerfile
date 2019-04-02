@@ -35,7 +35,6 @@ RUN apt-get update -y && \
     python-mock \
     python-mysqldb \
     python-nose \
-    python-paramiko \
     python-passlib \
     python-pip \
     python-setuptools \

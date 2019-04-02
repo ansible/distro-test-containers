@@ -40,7 +40,6 @@ RUN dnf clean all && \
     python3-mock \
     python3-mysql \
     python3-nose \
-    python3-paramiko \
     python3-passlib \
     python3-pip \
     python3-PyYAML \
