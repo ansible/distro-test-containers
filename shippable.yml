@@ -5,6 +5,7 @@ env:
   - C: centos7
   - C: fedora28
   - C: fedora29
+  - C: fedora30
   - C: opensuse15py2
   - C: opensuse15
   - C: ubuntu1604
