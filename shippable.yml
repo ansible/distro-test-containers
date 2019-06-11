@@ -3,7 +3,6 @@ language: python
 env:
   - C: centos6
   - C: centos7
-  - C: fedora28
   - C: fedora29
   - C: fedora30
   - C: opensuse15py2
