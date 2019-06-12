@@ -47,6 +47,7 @@ RUN dnf clean all && \
     python3-virtualenv \
     rpm-build \
     rubygems \
+    rubygem-rdoc \
     sshpass \
     subversion \
     sudo \
