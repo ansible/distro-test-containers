@@ -25,8 +25,11 @@ RUN dnf clean all && \
     libffi-devel \
     make \
     mariadb-server \
-    openssh-clients \
-    openssh-server \
+    # OpenSSH 8.0 generates PEM keys in PKCS8 format, which Paramiko does not recognize
+    # https://bugzilla.redhat.com/show_bug.cgi?id=1722285
+    # https://github.com/paramiko/paramiko/issues/1015
+    openssh-clients-7.9p1 \
+    openssh-server-7.9p1 \
     openssl-devel \
     pass \
     procps \
@@ -68,6 +71,12 @@ RUN ssh-keygen -q -t dsa -N '' -f /etc/ssh/ssh_host_dsa_key && \
     ssh-keygen -m PEM -q -t rsa -N '' -f /root/.ssh/id_rsa && \
     cp /root/.ssh/id_rsa.pub /root/.ssh/authorized_keys && \
     for key in /etc/ssh/ssh_host_*_key.pub; do echo "localhost $(cat ${key})" >> /root/.ssh/known_hosts; done
+# Update to the latest version of OpenSSH once the key is generated
+RUN dnf -y update \
+    openssh-clients \
+    openssh-server \
+    && \
+    dnf clean all
 RUN pip3 install coverage junit-xml
 ENV container=docker
 CMD ["/usr/sbin/init"]
