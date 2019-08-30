@@ -30,6 +30,7 @@ RUN dnf clean all && \
     openssl-devel \
     pass \
     procps \
+    python3 \
     python3-cryptography \
     python3-dbus \
     python3-devel \
