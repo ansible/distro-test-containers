@@ -35,7 +35,7 @@ RUN yum clean all && \
     python-lxml \
     python-mock \
     python-nose \
-    python-passlib \
+    python2-passlib \
     python-pip \
     python-setuptools \
     python-virtualenv \
@@ -48,7 +48,6 @@ RUN yum clean all && \
     unzip \
     which \
     && \
-    yum -y swap fakesystemd systemd && \
     yum clean all
 
 RUN /usr/bin/sed -i -e 's/^\(Defaults\s*requiretty\)/#--- \1/'  /etc/sudoers
