@@ -48,7 +48,11 @@ RUN yum clean all && \
     unzip \
     which \
     && \
-    yum clean all
+    yum clean all && \
+    rm -rf /usr/share/fonts/* \
+        /usr/share/i18n/* \
+        /usr/share/sgml/docbook/xsl-stylesheets* \
+        /usr/share/adobe/resources/*
 
 RUN /usr/bin/sed -i -e 's/^\(Defaults\s*requiretty\)/#--- \1/'  /etc/sudoers
 RUN mkdir /etc/ansible/
