@@ -1,5 +1,7 @@
 FROM centos:centos8
 
+ENV KEEPLANG="en_US.utf8"
+
 RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; done); \
 rm -f /lib/systemd/system/multi-user.target.wants/*; \
 rm -f /etc/systemd/system/*.wants/*; \
@@ -12,14 +14,11 @@ rm -f /lib/systemd/system/anaconda.target.wants/*;
 RUN yum clean all && \
     yum -y install epel-release && \
     yum -y install \
-    # python3-httplib2 \
-    # python3-keyczar \
-    # python3-mock \
-    # python3-passlib \
     acl \
     asciidoc \
     bzip2 \
     file \
+    glibc-langpack-en \
     gcc \
     git \
     iproute \
@@ -51,11 +50,14 @@ RUN yum clean all && \
     which \
     && \
     yum clean all && \
+    # Cleanup things that take up space
     rm -rf /usr/share/man/* \
         /usr/share/doc/* \
         /usr/share/sgml/* \
         /usr/share/fonts/* \
-        /usr/share/i18n/*
+        /usr/shar/i18n/* && \
+    # Remove locales we don't need to save space
+    find /usr/lib/locale -mindepth 1 -maxdepth 1 -type d -not \( -name "${KEEPLANG}" -o -name "POSIX" \) -exec rm -rf '{}' +
 
 RUN /usr/bin/sed -i -e 's/^\(Defaults\s*requiretty\)/#--- \1/'  /etc/sudoers
 RUN mkdir /etc/ansible/
@@ -66,6 +68,6 @@ RUN ssh-keygen -q -t dsa -N '' -f /etc/ssh/ssh_host_dsa_key && \
     ssh-keygen -m PEM -q -t rsa -N '' -f /root/.ssh/id_rsa && \
     cp /root/.ssh/id_rsa.pub /root/.ssh/authorized_keys && \
     for key in /etc/ssh/ssh_host_*_key.pub; do echo "localhost $(cat ${key})" >> /root/.ssh/known_hosts; done
-RUN pip3 install coverage junit-xml httplib2 keyczar mock passlib
+RUN pip3 install coverage junit-xml
 ENV container=docker
 CMD ["/usr/sbin/init"]
