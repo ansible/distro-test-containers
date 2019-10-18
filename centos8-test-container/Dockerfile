@@ -24,6 +24,7 @@ RUN yum clean all && \
     iproute \
     libffi \
     libffi-devel \
+    libuser \
     make \
     mariadb-server \
     mercurial \
