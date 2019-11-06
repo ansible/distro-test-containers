@@ -11,9 +11,10 @@ rm -f /lib/systemd/system/sockets.target.wants/*initctl*; \
 rm -f /lib/systemd/system/basic.target.wants/*; \
 rm -f /lib/systemd/system/anaconda.target.wants/*;
 
-RUN yum clean all && \
-    yum -y install epel-release && \
-    yum -y install \
+RUN dnf clean all && \
+    dnf -y --allowerasing install coreutils && \
+    dnf -y install epel-release && \
+    dnf -y install \
     acl \
     asciidoc \
     bzip2 \
@@ -50,7 +51,7 @@ RUN yum clean all && \
     unzip \
     which \
     && \
-    yum clean all && \
+    dnf clean all && \
     # Cleanup things that take up space
     rm -rf /usr/share/man/* \
         /usr/share/doc/* \
