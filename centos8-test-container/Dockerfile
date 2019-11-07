@@ -1,4 +1,4 @@
-FROM centos:centos8
+FROM centos:8
 
 ENV KEEPLANG="en_US.utf8"
 
@@ -12,11 +12,15 @@ rm -f /lib/systemd/system/basic.target.wants/*; \
 rm -f /lib/systemd/system/anaconda.target.wants/*;
 
 RUN dnf clean all && \
-    dnf -y --allowerasing install coreutils && \
+    # Remove coreutils-single in favor of coreutils is needed to get the correct
+    # version of /usr/bin/sleep
+    # Simply running dnf -y --allowerasing install coreutils resulted in a corrupt rpmdb
+    rpm -e --nodeps coreutils-single && \
     dnf -y install epel-release && \
-    dnf -y install \
+    dnf -y --setopt=install_weak_deps=false install \
     acl \
     asciidoc \
+    coreutils \
     bzip2 \
     file \
     glibc-langpack-en \
