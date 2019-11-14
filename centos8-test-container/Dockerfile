@@ -31,7 +31,6 @@ RUN dnf clean all && \
     libffi-devel \
     libuser \
     make \
-    mariadb-server \
     mercurial \
     openssh-clients \
     openssh-server \
@@ -43,7 +42,6 @@ RUN dnf clean all && \
     python3-lxml \
     python3-nose \
     python3-pip \
-    python3-PyMySQL \
     python3-pyyaml \
     python3-setuptools \
     python3-virtualenv \
