@@ -23,9 +23,7 @@ RUN yum clean all && \
     libffi \
     libffi-devel \
     make \
-    mariadb-server \
     mercurial \
-    MySQL-python \
     openssh-clients \
     openssh-server \
     openssl-devel \

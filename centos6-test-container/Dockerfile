@@ -13,9 +13,6 @@ RUN yum clean all && \
     libffi-devel \
     make \
     mercurial \
-    mysql \
-    MySQL-python \
-    mysql-server \
     openssh-clients \
     openssh-server \
     openssl-devel \
