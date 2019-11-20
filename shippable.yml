@@ -4,7 +4,6 @@ env:
   - C: centos6
   - C: centos7
   - C: centos8
-  - C: fedora29
   - C: fedora30
   - C: fedora31
   - C: opensuse15py2
