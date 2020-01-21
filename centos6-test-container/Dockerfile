@@ -1,4 +1,4 @@
-FROM centos:centos6
+FROM centos:6.10
 
 RUN yum clean all && \
     yum -y install epel-release && \

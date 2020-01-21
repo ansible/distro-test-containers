@@ -1,4 +1,4 @@
-FROM centos:8
+FROM centos:8.1.1911
 
 ENV KEEPLANG="en_US.utf8"
 
