@@ -71,6 +71,6 @@ RUN ssh-keygen -q -t dsa -N '' -f /etc/ssh/ssh_host_dsa_key && \
     for key in /etc/ssh/ssh_host_*_key.pub; do echo "localhost $(cat ${key})" >> /root/.ssh/known_hosts; done
 # explicitly enable the service, opensuse default to disabled services
 RUN systemctl enable sshd.service
-RUN pip install coverage junit-xml
+RUN pip install 'coverage<5' junit-xml
 ENV container=docker
 CMD ["/sbin/init"]

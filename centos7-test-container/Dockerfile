@@ -1,4 +1,4 @@
-FROM centos:centos7
+FROM centos:7.7.1908
 
 RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; done); \
 rm -f /lib/systemd/system/multi-user.target.wants/*; \
@@ -63,6 +63,6 @@ RUN ssh-keygen -q -t rsa1 -N '' -f /etc/ssh/ssh_host_key && \
     ssh-keygen -m PEM -q -t rsa -N '' -f /root/.ssh/id_rsa && \
     cp /root/.ssh/id_rsa.pub /root/.ssh/authorized_keys && \
     for key in /etc/ssh/ssh_host_*_key.pub; do echo "localhost $(cat ${key})" >> /root/.ssh/known_hosts; done
-RUN pip install coverage junit-xml
+RUN pip install 'coverage<5' junit-xml
 ENV container=docker
 CMD ["/usr/sbin/init"]
