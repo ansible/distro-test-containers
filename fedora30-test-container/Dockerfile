@@ -24,7 +24,6 @@ RUN dnf clean all && \
     libffi \
     libffi-devel \
     make \
-    mariadb-server \
     openssh-clients \
     openssh-server \
     openssl-devel \
@@ -38,7 +37,6 @@ RUN dnf clean all && \
     python3-jinja2 \
     python3-lxml \
     python3-mock \
-    python3-mysql \
     python3-nose \
     python3-passlib \
     python3-pip \

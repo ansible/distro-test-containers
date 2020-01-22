@@ -22,7 +22,6 @@ RUN apt-get update -y && \
     locales \
     lsb-release \
     make \
-    mysql-server \
     pass \
     openssh-client \
     openssh-server \
@@ -33,7 +32,6 @@ RUN apt-get update -y && \
     python3-jinja2 \
     python3-lxml \
     python3-mock \
-    python3-mysqldb \
     python3-nose \
     python3-passlib \
     python3-pip \
