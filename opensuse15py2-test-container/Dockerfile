@@ -15,7 +15,6 @@ RUN zypper --non-interactive --gpg-auto-import-keys refresh --services --force &
     iproute2 \
     lsb-release \
     make \
-    mariadb \
     mercurial \
     openssh \
     postgresql-server \
@@ -26,7 +25,6 @@ RUN zypper --non-interactive --gpg-auto-import-keys refresh --services --force &
     python-keyczar \
     python-lxml \
     python-mock \
-    python-PyMySQL \
     python-nose \
     python-passlib \
     python-pip \

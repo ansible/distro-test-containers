@@ -25,7 +25,6 @@ RUN apt-get update -y && \
     lsb-release \
     make \
     mercurial \
-    mysql-server \
     openssh-client \
     openssh-server \
     python-cryptography \
@@ -37,7 +36,6 @@ RUN apt-get update -y && \
     python-keyczar \
     python-lxml \
     python-mock \
-    python-mysqldb \
     python-nose \
     python-passlib \
     python-pip \
