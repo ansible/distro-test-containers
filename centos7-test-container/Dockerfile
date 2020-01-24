@@ -1,4 +1,4 @@
-FROM centos:7.7.1908
+FROM centos:7.6.1810
 
 RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; done); \
 rm -f /lib/systemd/system/multi-user.target.wants/*; \
@@ -35,7 +35,7 @@ RUN yum clean all && \
     python-lxml \
     python-mock \
     python-nose \
-    python-passlib \
+    python2-passlib \
     python-pip \
     python-setuptools \
     python-virtualenv \
@@ -48,8 +48,11 @@ RUN yum clean all && \
     unzip \
     which \
     && \
-    yum -y swap fakesystemd systemd && \
-    yum clean all
+    yum clean all && \
+    rm -rf /usr/share/fonts/* \
+        /usr/share/i18n/* \
+        /usr/share/sgml/docbook/xsl-stylesheets* \
+        /usr/share/adobe/resources/*
 
 RUN /usr/bin/sed -i -e 's/^\(Defaults\s*requiretty\)/#--- \1/'  /etc/sudoers
 RUN mkdir /etc/ansible/
