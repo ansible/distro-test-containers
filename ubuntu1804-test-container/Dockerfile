@@ -36,6 +36,7 @@ RUN apt-get update -y && \
     python3-passlib \
     python3-pip \
     python3-setuptools \
+    python3-venv \
     python3-virtualenv \
     python3-wheel \
     python3-yaml \
