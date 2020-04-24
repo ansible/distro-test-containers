@@ -10,6 +10,7 @@ env:
   - C: opensuse15
   - C: ubuntu1604
   - C: ubuntu1804
+  - C: ubuntu2004
 
 build:
   ci:
