@@ -26,6 +26,7 @@ RUN zypper --non-interactive --gpg-auto-import-keys refresh --services --force &
     python-lxml \
     python-mock \
     python-nose \
+    python2-packaging \
     python-passlib \
     python-pip \
     python-psycopg2 \

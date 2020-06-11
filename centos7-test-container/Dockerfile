@@ -35,6 +35,7 @@ RUN yum clean all && \
     python-lxml \
     python-mock \
     python-nose \
+    python2-packaging \
     python2-passlib \
     python-pip \
     python-setuptools \
