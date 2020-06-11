@@ -37,6 +37,7 @@ RUN apt-get update -y && \
     python-lxml \
     python-mock \
     python-nose \
+    python-packaging \
     python-passlib \
     python-pip \
     python-setuptools \

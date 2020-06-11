@@ -17,7 +17,7 @@ RUN dnf clean all && \
     # Simply running dnf -y --allowerasing install coreutils resulted in a corrupt rpmdb
     rpm -e --nodeps coreutils-single && \
     dnf -y install epel-release && \
-    dnf -y --setopt=install_weak_deps=false install \
+    dnf -y --setopt=install_weak_deps=false --enablerepo=PowerTools install \
     acl \
     asciidoc \
     coreutils \
@@ -42,6 +42,7 @@ RUN dnf clean all && \
     python3-lxml \
     python3-nose \
     python3-pip \
+    python3-packaging \
     python3-pyyaml \
     python3-setuptools \
     python3-virtualenv \
