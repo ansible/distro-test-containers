@@ -17,7 +17,7 @@ RUN dnf clean all && \
     # Simply running dnf -y --allowerasing install coreutils resulted in a corrupt rpmdb
     rpm -e --nodeps coreutils-single && \
     dnf -y install epel-release && \
-    dnf -y --setopt=install_weak_deps=false install \
+    dnf -y --setopt=install_weak_deps=false --enablerepo=PowerTools install \
     acl \
     asciidoc \
     coreutils \
@@ -42,6 +42,7 @@ RUN dnf clean all && \
     python3-lxml \
     python3-nose \
     python3-pip \
+    python3-packaging \
     python3-pyyaml \
     python3-setuptools \
     python3-virtualenv \
@@ -72,6 +73,6 @@ RUN ssh-keygen -q -t dsa -N '' -f /etc/ssh/ssh_host_dsa_key && \
     ssh-keygen -m PEM -q -t rsa -N '' -f /root/.ssh/id_rsa && \
     cp /root/.ssh/id_rsa.pub /root/.ssh/authorized_keys && \
     for key in /etc/ssh/ssh_host_*_key.pub; do echo "localhost $(cat ${key})" >> /root/.ssh/known_hosts; done
-RUN pip3 install 'coverage<5' junit-xml 'packaging==20.04'
+RUN pip3 install 'coverage<5' junit-xml
 ENV container=docker
 CMD ["/usr/sbin/init"]
