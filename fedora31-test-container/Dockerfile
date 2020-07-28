@@ -1,14 +1,5 @@
 FROM fedora:31
 
-RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; done); \
-rm -f /lib/systemd/system/multi-user.target.wants/*; \
-rm -f /etc/systemd/system/*.wants/*; \
-rm -f /lib/systemd/system/local-fs.target.wants/*; \
-rm -f /lib/systemd/system/sockets.target.wants/*udev*; \
-rm -f /lib/systemd/system/sockets.target.wants/*initctl*; \
-rm -f /lib/systemd/system/basic.target.wants/*; \
-rm -f /lib/systemd/system/anaconda.target.wants/*;
-
 RUN dnf clean all && \
     dnf -y upgrade && \
     dnf -y --allowerasing install coreutils && \
@@ -50,12 +41,22 @@ RUN dnf clean all && \
     sshpass \
     subversion \
     sudo \
+    systemd \
     tar \
     unzip \
     which \
     zip \
     && \
     dnf clean all
+
+RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; done); \
+    rm -f /lib/systemd/system/multi-user.target.wants/*; \
+    rm -f /etc/systemd/system/*.wants/*; \
+    rm -f /lib/systemd/system/local-fs.target.wants/*; \
+    rm -f /lib/systemd/system/sockets.target.wants/*udev*; \
+    rm -f /lib/systemd/system/sockets.target.wants/*initctl*; \
+    rm -f /lib/systemd/system/basic.target.wants/*; \
+    rm -f /lib/systemd/system/anaconda.target.wants/*;
 
 RUN localedef --quiet -c -i en_US -f UTF-8 en_US.UTF-8
 RUN /usr/bin/sed -i -e 's/^\(Defaults\s*requiretty\)/#--- \1/'  /etc/sudoers
