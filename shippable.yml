@@ -1,6 +1,7 @@
 language: python
 
 env:
+  - C: alpine3
   - C: centos6
   - C: centos7
   - C: centos8
