@@ -4,7 +4,7 @@ FROM alpine:3.12.0
 # Things like tar/zip are needed by unarchive
 # diffutils is installed for runme.sh tests that call diff
 # coreutils was explicitly omitted
-# sshpass was explicitly omitted as BusyBox timeout causes issues with out connection_ssh tests
+# sshpass was explicitly omitted as BusyBox timeout causes issues with our connection_ssh tests
 RUN apk add --no-cache openrc \
         acl \
         apache2 \
