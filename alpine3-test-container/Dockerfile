@@ -3,7 +3,8 @@ FROM alpine:3.12.0
 # Keep this as basic as possible, so we properly test against BusyBox
 # Things like tar/zip are needed by unarchive
 # diffutils is installed for runme.sh tests that call diff
-# coreutils was explicitly left out
+# coreutils was explicitly omitted
+# sshpass was explicitly omitted as BusyBox timeout causes issues with our connection_ssh tests
 RUN apk add --no-cache openrc \
         acl \
         apache2 \
@@ -36,7 +37,6 @@ RUN apk add --no-cache openrc \
         py3-wheel \
         ruby \
         rsync \
-        sshpass \
         subversion \
         sudo \
         tar \
