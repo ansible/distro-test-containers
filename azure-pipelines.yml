@@ -1,0 +1,28 @@
+trigger:
+  - master
+
+pr:
+  - master
+
+pool:
+  vmImage: 'ubuntu-18.04'
+
+jobs:
+  - job: matrix
+    displayName: Prepare Matrix
+    steps:
+      - script: ./azure-pipelines.py
+        name: prepare_matrix
+        displayName: Prepare Matrix
+  - job: build
+    displayName: Build
+    dependsOn: matrix
+    strategy:
+      # runtime expression
+      # see: https://docs.microsoft.com/en-us/azure/devops/pipelines/process/expressions?view=azure-devops
+      matrix: $[ dependencies.matrix.outputs['prepare_matrix.containers'] ]
+    steps:
+      - script: docker build -t "$(ContainerName)" "$(ContainerName)"
+        displayName: Build Container
+      - script: docker history "$(ContainerName)"
+        displayName: Show History
