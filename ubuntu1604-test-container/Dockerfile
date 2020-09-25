@@ -20,6 +20,7 @@ RUN apt-get update -y && \
     iproute2 \
     libffi-dev \
     libssl-dev \
+    libuser \
     libxml2-utils \
     locales \
     lsb-release \

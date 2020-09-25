@@ -13,6 +13,7 @@ RUN zypper --non-interactive --gpg-auto-import-keys refresh --services --force &
     glibc-i18ndata \
     glibc-locale \
     iproute2 \
+    libuser \
     lsb-release \
     make \
     mercurial \

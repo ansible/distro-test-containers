@@ -14,6 +14,7 @@ RUN dnf clean all && \
     iproute \
     libffi \
     libffi-devel \
+    libuser \
     make \
     openssh-clients \
     openssh-server \
