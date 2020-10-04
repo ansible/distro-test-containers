@@ -54,7 +54,9 @@ RUN apt-get update -y && \
     xsltproc \
     zip \
     && \
-    apt-get clean
+    apt-get clean \
+    && \
+    rm -rf /var/lib/apt/lists/*
 
 RUN ln -s /lib/systemd/systemd /sbin/init
 RUN rm /etc/apt/apt.conf.d/docker-clean

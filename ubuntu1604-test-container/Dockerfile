@@ -56,7 +56,9 @@ RUN apt-get update -y && \
     xsltproc \
     zip \
     && \
-    apt-get clean
+    apt-get clean \
+    && \
+    rm -rf /var/lib/apt/lists/*
 
 RUN rm /etc/apt/apt.conf.d/docker-clean
 RUN mkdir /etc/ansible/
