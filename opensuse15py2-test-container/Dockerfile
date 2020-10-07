@@ -18,6 +18,7 @@ RUN zypper --non-interactive --gpg-auto-import-keys refresh --services --force &
     mercurial \
     openssh \
     postgresql-server \
+    python2-cairo \
     python-cryptography \
     python-devel \
     python-httplib2 \
@@ -30,6 +31,7 @@ RUN zypper --non-interactive --gpg-auto-import-keys refresh --services --force &
     python-passlib \
     python-pip \
     python-psycopg2 \
+    python2-pycrypto \
     python-PyYAML \
     python-setuptools \
     python-virtualenv \
