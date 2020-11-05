@@ -66,8 +66,10 @@ RUN /usr/bin/echo -e '[local]\nlocalhost ansible_connection=local' > /etc/ansibl
 VOLUME /sys/fs/cgroup /run /tmp
 RUN ssh-keygen -q -t dsa -N '' -f /etc/ssh/ssh_host_dsa_key && \
     ssh-keygen -q -t rsa -N '' -f /etc/ssh/ssh_host_rsa_key && \
-    ssh-keygen -m PEM -q -t rsa -N '' -f /root/.ssh/id_rsa && \
-    cp /root/.ssh/id_rsa.pub /root/.ssh/authorized_keys && \
+    ssh-keygen -q -t ecdsa -N '' -f /etc/ssh/ssh_host_ecdsa_key && \
+    ssh-keygen -q -t ed25519 -N '' -f /etc/ssh/ssh_host_ed25519_key && \
+    ssh-keygen -m PEM -q -t ecdsa -N '' -f /root/.ssh/id_ecdsa && \
+    cp /root/.ssh/id_ecdsa.pub /root/.ssh/authorized_keys && \
     for key in /etc/ssh/ssh_host_*_key.pub; do echo "localhost $(cat ${key})" >> /root/.ssh/known_hosts; done
 RUN pip3 install 'coverage<5' junit-xml
 RUN systemctl enable sshd.service
