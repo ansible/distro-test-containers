@@ -1,6 +1,9 @@
 FROM centos:6.10
 
-RUN yum clean all && \
+COPY centos610-vault.repo /etc/yum.repos.d/centos610-vault.repo
+
+RUN rm /etc/yum.repos.d/CentOS-Base.repo && \
+    yum clean all && \
     yum -y install epel-release && \
     yum -y install \
     acl \
@@ -42,7 +45,7 @@ RUN yum clean all && \
     rpm -e --nodeps python-crypto && \
     yum clean all
 
-RUN pip install --upgrade pycrypto 'cryptography<2.0.0' 'pycparser<2.19'
+RUN pip install --upgrade pycrypto 'cryptography<2.0.0' 'pycparser<2.19' 'cffi!=1.14.4'
 
 RUN /bin/sed -i -e 's/^\(Defaults\s*requiretty\)/#--- \1/'  /etc/sudoers
 RUN mkdir /etc/ansible/
