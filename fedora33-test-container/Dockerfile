@@ -1,4 +1,4 @@
-FROM fedora:33
+FROM quay.io/bedrock/fedora:33
 
 
 RUN dnf clean all && \

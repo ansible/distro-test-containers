@@ -1,4 +1,4 @@
-FROM centos:6.10
+FROM quay.io/bedrock/centos:6.10
 
 COPY centos610-vault.repo /etc/yum.repos.d/centos610-vault.repo
 
