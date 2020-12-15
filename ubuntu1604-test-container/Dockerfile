@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM quay.io/bedrock/ubuntu:xenial-20201030
 
 RUN apt-get update -y && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
