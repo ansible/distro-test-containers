@@ -67,6 +67,6 @@ RUN ssh-keygen -m PEM -q -t rsa -N '' -f /root/.ssh/id_rsa && \
     cp /root/.ssh/id_rsa.pub /root/.ssh/authorized_keys && \
     for key in /etc/ssh/ssh_host_*_key.pub; do echo "localhost $(cat ${key})" >> /root/.ssh/known_hosts; done
 VOLUME /sys/fs/cgroup /run/lock /run /tmp
-RUN pip3 install 'coverage<5' junit-xml python3-keyczar
+RUN pip3 install 'coverage==4.5.4' 'resolvelib==0.5.4' 'junit-xml==1.9'
 ENV container=docker
 CMD ["/sbin/init"]

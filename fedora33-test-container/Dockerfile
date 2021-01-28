@@ -71,7 +71,7 @@ RUN ssh-keygen -q -t dsa -N '' -f /etc/ssh/ssh_host_dsa_key && \
     ssh-keygen -m PEM -q -t ecdsa -N '' -f /root/.ssh/id_ecdsa && \
     cp /root/.ssh/id_ecdsa.pub /root/.ssh/authorized_keys && \
     for key in /etc/ssh/ssh_host_*_key.pub; do echo "localhost $(cat ${key})" >> /root/.ssh/known_hosts; done
-RUN pip3 install 'coverage<5' junit-xml
+RUN pip3 install 'coverage==4.5.4' 'resolvelib==0.5.4' 'junit-xml==1.9'
 RUN systemctl enable sshd.service
 ENV container=docker
 CMD ["/usr/sbin/init"]

@@ -63,7 +63,7 @@ RUN /bin/echo -e "[local]\nlocalhost ansible_connection=local" > /etc/ansible/ho
 RUN ssh-keygen -m PEM -q -t rsa -N '' -f /root/.ssh/id_rsa
 RUN cp /root/.ssh/id_rsa.pub /root/.ssh/authorized_keys
 RUN ssh-keygen -A; for key in /etc/ssh/ssh_host_*_key.pub; do echo "localhost $(cat ${key})" >> /root/.ssh/known_hosts; done
-RUN pip3 install 'coverage<5' junit-xml
+RUN pip3 install 'coverage==4.5.4' 'resolvelib==0.5.4' 'junit-xml==1.9'
 RUN rc-update add sshd
 # inittab has some tty entries that cause issues
 RUN sed -i '/getty/d' /etc/inittab

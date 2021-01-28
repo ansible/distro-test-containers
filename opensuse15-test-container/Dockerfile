@@ -22,7 +22,6 @@ RUN zypper --non-interactive --gpg-auto-import-keys refresh --services --force &
     python3-devel \
     python3-httplib2 \
     python3-Jinja2 \
-    python3-keyczar \
     python3-lxml \
     python3-mock \
     python3-nose \
@@ -72,6 +71,6 @@ RUN ssh-keygen -q -t dsa -N '' -f /etc/ssh/ssh_host_dsa_key && \
     for key in /etc/ssh/ssh_host_*_key.pub; do echo "localhost $(cat ${key})" >> /root/.ssh/known_hosts; done
 # explicitly enable the service, opensuse default to disabled services
 RUN systemctl enable sshd.service
-RUN pip install 'coverage<5' junit-xml
+RUN pip install 'coverage==4.5.4' 'resolvelib==0.5.4' 'junit-xml==1.9'
 ENV container=docker
 CMD ["/sbin/init"]

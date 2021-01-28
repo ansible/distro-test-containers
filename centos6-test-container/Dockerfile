@@ -23,7 +23,6 @@ RUN rm /etc/yum.repos.d/CentOS-Base.repo && \
     python-devel \
     python-httplib2 \
     python-jinja2 \
-    python-keyczar \
     python-lxml \
     python-mock \
     python-nose \
@@ -45,7 +44,7 @@ RUN rm /etc/yum.repos.d/CentOS-Base.repo && \
     rpm -e --nodeps python-crypto && \
     yum clean all
 
-RUN pip install --upgrade pycrypto 'cryptography<2.0.0' 'pycparser<2.19' 'cffi!=1.14.4'
+RUN pip install 'pycrypto==2.6.1' 'cryptography==1.9' 'pycparser==2.18' 'cffi==1.14.3' 'packaging==16.8'
 
 RUN /bin/sed -i -e 's/^\(Defaults\s*requiretty\)/#--- \1/'  /etc/sudoers
 RUN mkdir /etc/ansible/
@@ -57,6 +56,6 @@ RUN ssh-keygen -q -t rsa1 -N '' -f /etc/ssh/ssh_host_key && \
     ssh-keygen -q -t rsa -N '' -f /root/.ssh/id_rsa && \
     cp /root/.ssh/id_rsa.pub /root/.ssh/authorized_keys && \
     for key in /etc/ssh/ssh_host_*_key.pub; do echo "localhost $(cat ${key})" >> /root/.ssh/known_hosts; done
-RUN pip install 'coverage<5' 'junit-xml==1.8' 'packaging==16.8'
+RUN pip install 'coverage==4.5.4' 'resolvelib==0.5.4' 'junit-xml==1.9'
 ENV container=docker
 CMD ["/sbin/init"]
