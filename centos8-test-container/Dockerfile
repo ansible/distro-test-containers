@@ -31,7 +31,6 @@ RUN dnf clean all && \
     libffi-devel \
     libuser \
     make \
-    mercurial \
     openssh-clients \
     openssh-server \
     openssl-devel \

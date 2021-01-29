@@ -17,7 +17,6 @@ RUN apk add --no-cache openrc \
         git \
         libffi-dev \
         make \
-        mercurial \
         openssh-client \
         openssh-server \
         openssh-sftp-server \
