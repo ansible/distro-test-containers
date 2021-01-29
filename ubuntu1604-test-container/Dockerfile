@@ -24,7 +24,6 @@ RUN apt-get update -y && \
     locales \
     lsb-release \
     make \
-    mercurial \
     openssh-client \
     openssh-server \
     python-cryptography \

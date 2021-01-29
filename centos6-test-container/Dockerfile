@@ -15,7 +15,6 @@ RUN rm /etc/yum.repos.d/CentOS-Base.repo && \
     libffi \
     libffi-devel \
     make \
-    mercurial \
     openssh-clients \
     openssh-server \
     openssl-devel \

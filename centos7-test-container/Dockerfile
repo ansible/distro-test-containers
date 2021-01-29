@@ -23,7 +23,6 @@ RUN yum clean all && \
     libffi \
     libffi-devel \
     make \
-    mercurial \
     openssh-clients \
     openssh-server \
     openssl-devel \

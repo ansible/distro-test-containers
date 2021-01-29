@@ -15,7 +15,6 @@ RUN zypper --non-interactive --gpg-auto-import-keys refresh --services --force &
     iproute2 \
     lsb-release \
     make \
-    mercurial \
     openssh \
     postgresql-server \
     python2-cairo \
