@@ -70,5 +70,6 @@ RUN ssh-keygen -q -t dsa -N '' -f /etc/ssh/ssh_host_dsa_key && \
     cp /root/.ssh/id_rsa.pub /root/.ssh/authorized_keys && \
     for key in /etc/ssh/ssh_host_*_key.pub; do echo "localhost $(cat ${key})" >> /root/.ssh/known_hosts; done
 RUN pip3 install 'coverage==4.5.4' 'resolvelib==0.5.4' 'junit-xml==1.9'
+RUN systemctl enable sshd.service
 ENV container=docker
 CMD ["/usr/sbin/init"]
