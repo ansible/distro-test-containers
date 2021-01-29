@@ -30,7 +30,6 @@ RUN zypper --non-interactive --gpg-auto-import-keys refresh --services --force &
     python-passlib \
     python-pip \
     python-psycopg2 \
-    python2-pycrypto \
     python-PyYAML \
     python-setuptools \
     python-virtualenv \
