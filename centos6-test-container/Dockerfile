@@ -43,7 +43,7 @@ RUN rm /etc/yum.repos.d/CentOS-Base.repo && \
     && \
     yum clean all
 
-RUN pip install 'cryptography==1.9' 'pycparser==2.18' 'cffi==1.14.3' 'packaging==16.8'
+RUN pip install 'cryptography==1.9' 'idna==2.5' 'pycparser==2.18' 'cffi==1.14.3' 'packaging==16.8'
 
 RUN /bin/sed -i -e 's/^\(Defaults\s*requiretty\)/#--- \1/'  /etc/sudoers
 RUN mkdir /etc/ansible/
