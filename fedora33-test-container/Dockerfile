@@ -61,6 +61,8 @@ RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == system
 
 RUN localedef --quiet -c -i en_US -f UTF-8 en_US.UTF-8
 RUN /usr/bin/sed -i -e 's/^\(Defaults\s*requiretty\)/#--- \1/'  /etc/sudoers
+# hack to provide backwards compatibility for paramiko
+RUN /usr/bin/sed -i -e 's/^PubkeyAcceptedKeyTypes /PubkeyAcceptedKeyTypes ssh-rsa,/' /usr/share/crypto-policies/DEFAULT/openssh.txt
 RUN mkdir /etc/ansible/
 RUN /usr/bin/echo -e '[local]\nlocalhost ansible_connection=local' > /etc/ansible/hosts
 VOLUME /sys/fs/cgroup /run /tmp
