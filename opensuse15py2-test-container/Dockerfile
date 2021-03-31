@@ -63,6 +63,9 @@ VOLUME /sys/fs/cgroup /run /tmp
 RUN ssh-keygen -A
 # explicitly enable the service, opensuse default to disabled services
 RUN systemctl enable sshd.service
-RUN pip install 'coverage==4.5.4' 'resolvelib==0.5.4' 'junit-xml==1.9'
+
+COPY requirements.txt /tmp/requirements.txt
+RUN pip install --disable-pip-version-check -r /tmp/requirements.txt && rm /tmp/requirements.txt
+
 ENV container=docker
 CMD ["/sbin/init"]

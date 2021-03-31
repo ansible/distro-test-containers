@@ -60,7 +60,6 @@ RUN apk add --no-cache \
 RUN mkdir /etc/ansible/
 RUN /bin/echo -e "[local]\nlocalhost ansible_connection=local" > /etc/ansible/hosts
 RUN ssh-keygen -A
-RUN pip3 install 'coverage==4.5.4' 'resolvelib==0.5.4' 'junit-xml==1.9'
 RUN rc-update add sshd
 # inittab has some tty entries that cause issues
 RUN sed -i '/getty/d' /etc/inittab
@@ -68,5 +67,9 @@ RUN sed -i '/getty/d' /etc/inittab
 RUN echo root:ansible | chpasswd
 
 VOLUME /sys/fs/cgroup /run/lock /run /tmp
+
+COPY requirements.txt /tmp/requirements.txt
+RUN pip3 install --disable-pip-version-check -r /tmp/requirements.txt && rm /tmp/requirements.txt
+
 ENV container=docker
 CMD ["/sbin/init"]

@@ -64,6 +64,9 @@ RUN mkdir /etc/ansible/
 RUN /bin/echo -e "[local]\nlocalhost ansible_connection=local" > /etc/ansible/hosts
 RUN locale-gen en_US.UTF-8
 VOLUME /sys/fs/cgroup /run/lock /run /tmp
-RUN pip3 install 'coverage==4.5.4' 'resolvelib==0.5.4' 'junit-xml==1.9'
+
+COPY requirements.txt /tmp/requirements.txt
+RUN pip3 install --disable-pip-version-check -r /tmp/requirements.txt && rm /tmp/requirements.txt
+
 ENV container=docker
 CMD ["/sbin/init"]
