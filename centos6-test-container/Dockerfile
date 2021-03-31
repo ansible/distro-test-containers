@@ -42,18 +42,6 @@ RUN rm /etc/yum.repos.d/CentOS-Base.repo && \
     && \
     yum clean all
 
-RUN pip install \
-    asn1crypto==1.4.0 \
-    cffi==1.14.3 \
-    cryptography==1.9 \
-    enum34==1.1.10 \
-    idna==2.5 \
-    ipaddress==1.0.23 \
-    packaging==16.8 \
-    pycparser==2.18 \
-    pyparsing==2.4.7 \
-    six==1.15.0
-
 RUN /bin/sed -i -e 's/^\(Defaults\s*requiretty\)/#--- \1/'  /etc/sudoers
 RUN mkdir /etc/ansible/
 RUN /bin/echo -e '[local]\nlocalhost ansible_connection=local' > /etc/ansible/hosts
