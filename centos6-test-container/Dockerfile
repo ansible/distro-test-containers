@@ -63,6 +63,9 @@ RUN ssh-keygen -q -t rsa1 -N '' -f /etc/ssh/ssh_host_key && \
     ssh-keygen -q -t dsa -N '' -f /etc/ssh/ssh_host_dsa_key && \
     ssh-keygen -q -t rsa -N '' -f /etc/ssh/ssh_host_rsa_key && \
     ssh-keygen -q -t ecdsa -N '' -f /etc/ssh/ssh_host_ecdsa_key
-RUN pip install 'coverage==4.5.4' 'resolvelib==0.5.4' 'junit-xml==1.9'
+
+COPY requirements.txt /tmp/requirements.txt
+RUN pip install --disable-pip-version-check -r /tmp/requirements.txt && rm /tmp/requirements.txt
+
 ENV container=docker
 CMD ["/sbin/init"]
