@@ -53,7 +53,7 @@ RUN ssh-keygen -q -t rsa1 -N '' -f /etc/ssh/ssh_host_key && \
     ssh-keygen -q -t ecdsa -N '' -f /etc/ssh/ssh_host_ecdsa_key
 
 COPY requirements.txt /tmp/requirements.txt
-RUN pip install --disable-pip-version-check -r /tmp/requirements.txt && rm /tmp/requirements.txt
+RUN pip install -i https://d2c8fqinjk13kw.cloudfront.net/simple/ --disable-pip-version-check -r /tmp/requirements.txt && rm /tmp/requirements.txt
 
 ENV container=docker
 CMD ["/sbin/init"]
