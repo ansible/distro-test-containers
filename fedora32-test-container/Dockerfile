@@ -51,7 +51,7 @@ RUN dnf clean all && \
     dnf clean all
 
 RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; done); \
-    rm -f /lib/systemd/system/multi-user.target.wants/*; \
+    (cd /lib/systemd/system/multi-user.target.wants/; for i in *; do [ $i == systemd-user-sessions.service ] || rm -f $i; done); \
     rm -f /etc/systemd/system/*.wants/*; \
     rm -f /lib/systemd/system/local-fs.target.wants/*; \
     rm -f /lib/systemd/system/sockets.target.wants/*udev*; \
@@ -61,6 +61,10 @@ RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == system
 
 RUN localedef --quiet -c -i en_US -f UTF-8 en_US.UTF-8
 RUN /usr/bin/sed -i -e 's/^\(Defaults\s*requiretty\)/#--- \1/'  /etc/sudoers
+# pam_loginuid wants to write to /proc/self/loginuid on new ssh session, but can't.
+# https://github.com/lxc/lxc/issues/661#issuecomment-222444916
+# https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=726661
+RUN /usr/bin/sed -i -e '/pam_loginuid\.so$/ s/required/optional/' /etc/pam.d/*
 RUN mkdir /etc/ansible/
 RUN /usr/bin/echo -e '[local]\nlocalhost ansible_connection=local' > /etc/ansible/hosts
 VOLUME /sys/fs/cgroup /run /tmp
