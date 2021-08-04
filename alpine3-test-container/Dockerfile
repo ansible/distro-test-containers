@@ -69,7 +69,7 @@ RUN echo root:ansible | chpasswd
 VOLUME /sys/fs/cgroup /run/lock /run /tmp
 
 COPY requirements.txt /tmp/requirements.txt
-RUN pip3 install --disable-pip-version-check -r /tmp/requirements.txt && rm /tmp/requirements.txt
+RUN pip3 install --no-cache-dir --disable-pip-version-check -r /tmp/requirements.txt && rm /tmp/requirements.txt
 
 ENV container=docker
 CMD ["/sbin/init"]

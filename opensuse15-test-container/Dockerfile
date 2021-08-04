@@ -69,7 +69,7 @@ ADD https://ansible-ci-files.s3.amazonaws.com/distro-test-container-files/setupt
   /usr/lib64/python3.6/ensurepip/_bundled/setuptools-44.1.1-py2.py3-none-any.whl
 
 COPY requirements.txt /tmp/requirements.txt
-RUN pip install --disable-pip-version-check -r /tmp/requirements.txt && rm /tmp/requirements.txt
+RUN pip install --no-cache-dir --disable-pip-version-check -r /tmp/requirements.txt && rm /tmp/requirements.txt
 
 ENV container=docker
 CMD ["/sbin/init"]

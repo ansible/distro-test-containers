@@ -72,7 +72,7 @@ RUN ssh-keygen -A
 RUN systemctl enable sshd.service
 
 COPY requirements.txt /tmp/requirements.txt
-RUN pip3 install --disable-pip-version-check -r /tmp/requirements.txt && rm /tmp/requirements.txt
+RUN pip3 install --no-cache-dir --disable-pip-version-check -r /tmp/requirements.txt && rm /tmp/requirements.txt
 
 ENV container=docker
 CMD ["/usr/sbin/init"]

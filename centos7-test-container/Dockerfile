@@ -60,7 +60,7 @@ VOLUME /sys/fs/cgroup /run /tmp
 RUN ssh-keygen -A
 
 COPY requirements.txt /tmp/requirements.txt
-RUN pip install --disable-pip-version-check -r /tmp/requirements.txt && rm /tmp/requirements.txt
+RUN pip install --no-cache-dir --disable-pip-version-check -r /tmp/requirements.txt && rm /tmp/requirements.txt
 
 ENV container=docker
 CMD ["/usr/sbin/init"]
