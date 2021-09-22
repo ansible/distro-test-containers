@@ -1,4 +1,4 @@
-FROM quay.io/bedrock/ubuntu:bionic-20181018
+FROM quay.io/bedrock/ubuntu:bionic-20210827
 
 RUN apt-get update -y && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \

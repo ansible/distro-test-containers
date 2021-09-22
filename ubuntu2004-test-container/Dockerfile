@@ -1,4 +1,4 @@
-FROM quay.io/bedrock/ubuntu:focal-20200423
+FROM quay.io/bedrock/ubuntu:focal-20210827
 
 RUN apt-get update -y && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
