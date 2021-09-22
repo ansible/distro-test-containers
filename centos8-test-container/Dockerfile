@@ -1,4 +1,4 @@
-FROM quay.io/bedrock/centos:8.2.2004
+FROM quay.io/centos/centos:8.2.2004
 
 ENV KEEPLANG="en_US.utf8"
 
