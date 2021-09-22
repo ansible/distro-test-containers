@@ -1,5 +1,4 @@
-FROM quay.io/bedrock/fedora:34
-
+FROM quay.io/fedora/fedora:34
 
 RUN dnf clean all && \
     dnf -y upgrade && \
