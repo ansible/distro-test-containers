@@ -66,7 +66,7 @@ RUN locale-gen en_US.UTF-8
 VOLUME /sys/fs/cgroup /run/lock /run /tmp
 
 COPY requirements.txt /tmp/requirements.txt
-RUN pip3 install --disable-pip-version-check -r /tmp/requirements.txt && rm /tmp/requirements.txt
+RUN pip3 install --disable-pip-version-check --no-cache-dir -r /tmp/requirements.txt && rm /tmp/requirements.txt
 
 ENV container=docker
 CMD ["/sbin/init"]
