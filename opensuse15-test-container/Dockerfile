@@ -64,12 +64,9 @@ VOLUME /sys/fs/cgroup /run /tmp
 RUN ssh-keygen -A
 # explicitly enable the service, opensuse default to disabled services
 RUN systemctl enable sshd.service
-# 15.2 ships with a broken ensurepip, we need to replace this .whl
-ADD https://ansible-ci-files.s3.amazonaws.com/distro-test-container-files/setuptools-44.1.1-py2.py3-none-any.whl \
-  /usr/lib64/python3.6/ensurepip/_bundled/setuptools-44.1.1-py2.py3-none-any.whl
 
 COPY requirements.txt /tmp/requirements.txt
-RUN pip install --disable-pip-version-check -r /tmp/requirements.txt && rm /tmp/requirements.txt
+RUN pip install --disable-pip-version-check --no-cache-dir -r /tmp/requirements.txt && rm /tmp/requirements.txt
 
 ENV container=docker
 CMD ["/sbin/init"]
