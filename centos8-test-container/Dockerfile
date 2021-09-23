@@ -1,4 +1,4 @@
-FROM quay.io/centos/centos:8.2.2004
+FROM quay.io/centos/centos:8.4.2105
 
 ENV KEEPLANG="en_US.utf8"
 
@@ -17,7 +17,7 @@ RUN dnf clean all && \
     # Simply running dnf -y --allowerasing install coreutils resulted in a corrupt rpmdb
     rpm -e --nodeps coreutils-single && \
     dnf -y install epel-release && \
-    dnf -y --setopt=install_weak_deps=false --enablerepo=PowerTools install \
+    dnf -y --setopt=install_weak_deps=false --enablerepo=powertools install \
     acl \
     asciidoc \
     coreutils \
