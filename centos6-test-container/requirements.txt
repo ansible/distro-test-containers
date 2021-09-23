@@ -5,7 +5,5 @@ cryptography==1.9
 enum34==1.1.10
 idna==2.5
 ipaddress==1.0.23
-packaging==16.8
 pycparser==2.18
-pyparsing==2.4.7
 six==1.13.0
