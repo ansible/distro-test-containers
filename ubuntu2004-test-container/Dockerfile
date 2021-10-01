@@ -1,6 +1,7 @@
 FROM quay.io/bedrock/ubuntu:focal-20210827
 
 RUN apt-get update -y && \
+    DEBIAN_FRONTEND=noninteractive apt-get upgrade -y --no-install-recommends && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     acl \
     apache2 \

@@ -2,6 +2,7 @@ FROM quay.io/bedrock/leap:15.3
 
 RUN zypper --non-interactive --gpg-auto-import-keys refresh --services --force && \
     zypper --non-interactive install --force systemd-sysvinit && \
+    zypper --non-interactive update --auto-agree-with-licenses --no-recommends && \
     zypper --non-interactive install --auto-agree-with-licenses --no-recommends \
     acl \
     apache2 \
