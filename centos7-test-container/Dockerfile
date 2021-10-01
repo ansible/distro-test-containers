@@ -11,6 +11,7 @@ rm -f /lib/systemd/system/anaconda.target.wants/*;
 
 RUN yum clean all && \
     yum -y install epel-release && \
+    yum -y upgrade && \
     yum -y install \
     acl \
     asciidoc \

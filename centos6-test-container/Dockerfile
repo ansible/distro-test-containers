@@ -5,6 +5,7 @@ COPY centos610-vault.repo /etc/yum.repos.d/centos610-vault.repo
 RUN rm /etc/yum.repos.d/CentOS-Base.repo && \
     yum clean all && \
     yum -y install epel-release && \
+    yum -y upgrade && \
     yum -y install \
     acl \
     asciidoc \
