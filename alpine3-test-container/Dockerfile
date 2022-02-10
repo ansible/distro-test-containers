@@ -1,4 +1,4 @@
-FROM quay.io/bedrock/alpine:3.14.2
+FROM quay.io/bedrock/alpine:3.15.0
 
 # Keep this as basic as possible, so we properly test against BusyBox
 # Things like tar/zip are needed by unarchive
@@ -44,14 +44,7 @@ RUN apk add --no-cache openrc \
         zip \
         musl-dev \
         yaml-dev \
-        ca-certificates
-
-# iproute2-minimal and py3-passlib only exist in edge currently
-# pass and gnupg are installed here because if installed above they
-# create dep conflicts
-RUN apk add --no-cache \
-        --repository=http://dl-cdn.alpinelinux.org/alpine/edge/main \
-        --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community \
+        ca-certificates \
         iproute2-minimal \
         py3-passlib \
         pass \
