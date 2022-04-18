@@ -6,4 +6,4 @@ Each directory in this repository corresponds to a [quay.io](https://quay.io/org
 If you are looking for the `default` test container then see:
 
 * [ansible/default-test-container](https://github.com/ansible/default-test-container/) - Used for collections.
-* [ansible/ansible-base-test-container](https://github.com/ansible/ansible-base-test-container/) - Used for ansible-base.
+* [ansible/ansible-core-test-container](https://github.com/ansible/ansible-core-test-container/) - Used for ansible-core.
