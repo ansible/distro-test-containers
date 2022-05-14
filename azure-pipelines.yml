@@ -1,8 +1,15 @@
 trigger:
-  - main
+  branches:
+    include:
+      - main
+  tags:
+    include:
+      - v*
 
 pr:
-  - main
+  branches:
+    include:
+      - main
 
 pool:
   vmImage: 'ubuntu-20.04'
