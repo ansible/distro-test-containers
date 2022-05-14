@@ -41,8 +41,8 @@ stages:
               --push
               --tag "quay.io/ansible/$(ContainerName):main"
               --tag "quay.io/ansible/$(ContainerName):latest"
-                    "quay.io/ansible/scratchpad:$(ContainerName)-x86_64"
-                    "quay.io/ansible/scratchpad:$(ContainerName)-aarch64"
+              "quay.io/ansible/scratchpad:$(ContainerName)-x86_64"
+              "quay.io/ansible/scratchpad:$(ContainerName)-aarch64"
             displayName: Merge
         strategy:
           matrix: $[ stageDependencies.Prepare.Matrix.outputs['Generate.containers'] ]
