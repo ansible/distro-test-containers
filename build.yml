@@ -1,0 +1,21 @@
+parameters:
+  - name: architectures
+    type: object
+
+stages:
+  - ${{ each arch in parameters.architectures }}:
+      - stage: "${{ arch }}"
+        dependsOn: Prepare
+        jobs:
+          - job: Build
+            steps:
+              - template: install.yml
+              - script: >
+                  containmint build
+                  --tag "quay.io/ansible/scratchpad:$(ContainerName)-${{ arch }}"
+                  --arch "${{ arch }}"
+                  --context "$(ContainerName)"
+                  --no-login
+                displayName: Build
+            strategy:
+              matrix: $[ stageDependencies.Prepare.Matrix.outputs['Generate.containers'] ]

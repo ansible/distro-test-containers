@@ -5,24 +5,44 @@ pr:
   - main
 
 pool:
-  vmImage: 'ubuntu-18.04'
+  vmImage: 'ubuntu-20.04'
 
-jobs:
-  - job: matrix
-    displayName: Prepare Matrix
-    steps:
-      - script: ./azure-pipelines.py
-        name: prepare_matrix
-        displayName: Prepare Matrix
-  - job: build
-    displayName: Build
-    dependsOn: matrix
-    strategy:
-      # runtime expression
-      # see: https://docs.microsoft.com/en-us/azure/devops/pipelines/process/expressions?view=azure-devops
-      matrix: $[ dependencies.matrix.outputs['prepare_matrix.containers'] ]
-    steps:
-      - script: docker build -t "$(ContainerName)" "$(ContainerName)"
-        displayName: Build Container
-      - script: docker history "$(ContainerName)"
-        displayName: Show History
+variables:
+  python_version: '3.10'
+  containmint_version: '0.1.0'
+
+stages:
+  - stage: Prepare
+    dependsOn: []
+    jobs:
+      - job: Matrix
+        steps:
+          - script: ./azure-pipelines.py
+            name: Generate
+
+  - template: build.yml
+    parameters:
+      architectures:
+        - x86_64
+        - aarch64
+
+  - stage: Finalize
+    dependsOn:
+      - Prepare
+      - x86_64
+      - aarch64
+    jobs:
+      - job: Image
+        steps:
+          - template: install.yml
+          - script: >
+              echo
+              containmint merge
+              --push
+              --tag "quay.io/ansible/$(ContainerName):main"
+              --tag "quay.io/ansible/$(ContainerName):latest"
+                    "quay.io/ansible/scratchpad:$(ContainerName)-x86_64"
+                    "quay.io/ansible/scratchpad:$(ContainerName)-aarch64"
+            displayName: Merge
+        strategy:
+          matrix: $[ stageDependencies.Prepare.Matrix.outputs['Generate.containers'] ]
