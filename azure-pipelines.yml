@@ -5,7 +5,7 @@ trigger:
       - main
   tags:
     include:
-      - *
+      - '*'
 
 pr:
   branches:
