@@ -1,4 +1,4 @@
-FROM quay.io/centos/centos:7.9.2009
+FROM quay.io/bedrock/centos:7.9.2009
 
 RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; done); \
 rm -f /lib/systemd/system/multi-user.target.wants/*; \
