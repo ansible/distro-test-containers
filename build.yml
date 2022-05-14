@@ -15,7 +15,9 @@ stages:
                   --tag "quay.io/ansible/scratchpad:$(ContainerName)-${{ arch }}"
                   --arch "${{ arch }}"
                   --context "$(ContainerName)"
-                  --no-login
+                  $(push_or_no_login)
                 displayName: Build
+                env:
+                  CONTAINMINT_PASSWORD: $(CONTAINMINT_PASSWORD)
             strategy:
               matrix: $[ stageDependencies.Prepare.Matrix.outputs['Generate.containers'] ]

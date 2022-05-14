@@ -17,6 +17,10 @@ pool:
 variables:
   python_version: '3.10'
   containmint_version: '0.1.0'
+  ${{ if ne(variables['CONTAINMINT_PASSWORD'], '') }}:
+    push_or_no_login: --push
+  ${{ else }}:
+    push_or_no_login: --no-login
 
 stages:
   - stage: Prepare
@@ -33,11 +37,12 @@ stages:
         - x86_64
         - aarch64
 
-  - stage: Finalize
+  - stage: Deploy
     dependsOn:
       - Prepare
       - x86_64
       - aarch64
+    condition: and(succeeded(), ne(variables['CONTAINMINT_PASSWORD'], ''))
     jobs:
       - job: Image
         steps:
@@ -46,10 +51,12 @@ stages:
               echo
               containmint merge
               --push
-              --tag "quay.io/ansible/$(ContainerName):main"
               --tag "quay.io/ansible/$(ContainerName):latest"
+              --tag "quay.io/ansible/$(ContainerName):$(Build.SourceBranchName)"
               "quay.io/ansible/scratchpad:$(ContainerName)-x86_64"
               "quay.io/ansible/scratchpad:$(ContainerName)-aarch64"
             displayName: Merge
+            env:
+              CONTAINMINT_PASSWORD: $(CONTAINMINT_PASSWORD)
         strategy:
           matrix: $[ stageDependencies.Prepare.Matrix.outputs['Generate.containers'] ]
