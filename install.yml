@@ -3,5 +3,5 @@ steps:
     inputs:
       versionSpec: '$(python_version)'
     displayName: Use Python
-  - script: pip install https://github.com/ansible/containmint/archive/v$(containmint_version)tar.gz --disable-pip-version-check --user
+  - script: pip install https://github.com/ansible/containmint/archive/v$(containmint_version).tar.gz --disable-pip-version-check --user
     displayName: Install containmint
