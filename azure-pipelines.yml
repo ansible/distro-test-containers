@@ -18,7 +18,7 @@ pool:
 variables:
   python_version: '3.10'
   containmint_version: '0.1.0'
-  ${{ if ne(variables['CONTAINMINT_PASSWORD'], '') }}:
+  ${{ if ne(variables['Build.Reason'], 'PullRequest') }}:
     push_or_no_login: --push
   ${{ else }}:
     push_or_no_login: --no-login
@@ -43,7 +43,7 @@ stages:
       - Prepare
       - x86_64
       - aarch64
-    condition: and(succeeded(), ne(variables['CONTAINMINT_PASSWORD'], ''))
+    condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
     jobs:
       - job: Image
         steps:
