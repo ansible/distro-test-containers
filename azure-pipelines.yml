@@ -49,7 +49,6 @@ stages:
         steps:
           - template: install.yml
           - script: >
-              echo
               containmint merge
               --push
               --tag "quay.io/ansible/$(ContainerName):latest"
