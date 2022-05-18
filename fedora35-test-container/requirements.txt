@@ -1,2 +1,2 @@
-coverage==6.3.2
+coverage==6.3.3
 resolvelib==0.5.4
