@@ -12,7 +12,7 @@ stages:
               - template: install.yml
               - script: >
                   containmint build
-                  --tag "quay.io/ansible/scratchpad:$(ContainerName)-${{ arch }}"
+                  --tag "quay.io/ansible/scratchpad:$(ContainerName)-$(Build.SourceBranchName)-$(Build.BuildId)-${{ arch }}"
                   --arch "${{ arch }}"
                   --context "$(ContainerName)"
                   $(push_or_no_login)
