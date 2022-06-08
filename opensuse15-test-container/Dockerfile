@@ -59,8 +59,6 @@ rm -f ${LIBSYSTEMD}/basic.target.wants/*;
 # don't create systemd-session for ssh connections
 RUN sed -i /pam_systemd/d /etc/pam.d/common-session-pc
 
-RUN mkdir /etc/ansible/
-RUN /usr/bin/echo -e '[local]\nlocalhost ansible_connection=local' > /etc/ansible/hosts
 VOLUME /sys/fs/cgroup /run /tmp
 RUN ssh-keygen -A
 # explicitly enable the service, opensuse default to disabled services

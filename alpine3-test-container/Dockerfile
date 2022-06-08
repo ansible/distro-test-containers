@@ -50,8 +50,6 @@ RUN apk add --no-cache openrc \
         pass \
         gnupg
 
-RUN mkdir /etc/ansible/
-RUN /bin/echo -e "[local]\nlocalhost ansible_connection=local" > /etc/ansible/hosts
 RUN ssh-keygen -A
 RUN rc-update add sshd
 # inittab has some tty entries that cause issues

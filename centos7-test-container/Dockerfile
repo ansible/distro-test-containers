@@ -55,8 +55,6 @@ RUN yum clean all && \
         /usr/share/adobe/resources/*
 
 RUN /usr/bin/sed -i -e 's/^\(Defaults\s*requiretty\)/#--- \1/'  /etc/sudoers
-RUN mkdir /etc/ansible/
-RUN /usr/bin/echo -e '[local]\nlocalhost ansible_connection=local' > /etc/ansible/hosts
 VOLUME /sys/fs/cgroup /run /tmp
 RUN ssh-keygen -A
 
