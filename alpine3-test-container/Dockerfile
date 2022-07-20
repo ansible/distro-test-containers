@@ -30,6 +30,7 @@ RUN apk add --no-cache openrc \
         py3-lxml \
         py3-mock \
         py3-packaging \
+        py3-resolvelib \
         py3-setuptools \
         py3-virtualenv \
         py3-yaml \

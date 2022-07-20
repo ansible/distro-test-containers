@@ -33,6 +33,7 @@ RUN dnf clean all && \
     python3-passlib \
     python3-pip \
     python3-PyYAML \
+    python3-resolvelib \
     python3-setuptools \
     python3-virtualenv \
     rpm-build \
