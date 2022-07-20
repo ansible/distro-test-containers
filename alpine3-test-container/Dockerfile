@@ -23,7 +23,6 @@ RUN apk add --no-cache openrc \
         openssl-dev \
         python3 \
         python3-dev \
-        py3-nose \
         py3-pip \
         py3-jinja2 \
         py3-cryptography \
