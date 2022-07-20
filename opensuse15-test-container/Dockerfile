@@ -18,7 +18,6 @@ RUN zypper --non-interactive --gpg-auto-import-keys refresh --services --force &
     make \
     openssh \
     postgresql-server \
-    python3-cairo \
     python3-cryptography \
     python3-devel \
     python3-httplib2 \
