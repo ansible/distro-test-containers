@@ -17,19 +17,15 @@ RUN zypper --non-interactive --gpg-auto-import-keys refresh --services --force &
     lsb-release \
     make \
     openssh \
-    postgresql-server \
-    python3-cairo \
     python3-cryptography \
     python3-devel \
     python3-httplib2 \
     python3-Jinja2 \
     python3-lxml \
     python3-mock \
-    python3-nose \
     python3-packaging \
     python3-passlib \
     python3-pip \
-    python3-psycopg2 \
     python3-PyYAML \
     python3-selinux \
     python3-setuptools \

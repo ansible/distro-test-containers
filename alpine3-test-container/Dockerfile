@@ -1,4 +1,4 @@
-FROM quay.io/bedrock/alpine:3.16.0
+FROM quay.io/bedrock/alpine:3.16.1
 
 # Keep this as basic as possible, so we properly test against BusyBox
 # Things like tar/zip are needed by unarchive
@@ -23,13 +23,13 @@ RUN apk add --no-cache openrc \
         openssl-dev \
         python3 \
         python3-dev \
-        py3-nose \
         py3-pip \
         py3-jinja2 \
         py3-cryptography \
         py3-lxml \
         py3-mock \
         py3-packaging \
+        py3-resolvelib \
         py3-setuptools \
         py3-virtualenv \
         py3-yaml \

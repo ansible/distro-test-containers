@@ -1,4 +1,4 @@
-FROM quay.io/bedrock/ubuntu:jammy-20220428
+FROM quay.io/bedrock/ubuntu:jammy-20220531
 
 RUN apt-get update -y && \
     DEBIAN_FRONTEND=noninteractive apt-get upgrade -y --no-install-recommends && \
@@ -33,10 +33,10 @@ RUN apt-get update -y && \
     python3-jinja2 \
     python3-lxml \
     python3-mock \
-    python3-nose \
     python3-packaging \
     python3-passlib \
     python3-pip \
+    python3-resolvelib \
     python3-setuptools \
     python3-venv \
     python3-virtualenv \

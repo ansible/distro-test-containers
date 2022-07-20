@@ -1,4 +1,4 @@
-FROM quay.io/bedrock/ubuntu:focal-20220415
+FROM quay.io/bedrock/ubuntu:focal-20220531
 
 RUN apt-get update -y && \
     DEBIAN_FRONTEND=noninteractive apt-get upgrade -y --no-install-recommends && \
@@ -33,7 +33,6 @@ RUN apt-get update -y && \
     python3-jinja2 \
     python3-lxml \
     python3-mock \
-    python3-nose \
     python3-packaging \
     python3-passlib \
     python3-pip \
