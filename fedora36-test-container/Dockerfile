@@ -67,7 +67,6 @@ RUN /usr/bin/sed -i -e '/pam_loginuid\.so$/ s/required/optional/' /etc/pam.d/*
 # allow ssh-rsa key authentication, which is required for paramiko and EC2 compatibility
 RUN /usr/bin/sed -i -e 's/^PubkeyAcceptedKeyTypes /PubkeyAcceptedKeyTypes ssh-rsa,/' /usr/share/crypto-policies/DEFAULT/openssh.txt
 RUN /usr/bin/sed -i -e 's/^PubkeyAcceptedKeyTypes /PubkeyAcceptedKeyTypes ssh-rsa,/' /usr/share/crypto-policies/DEFAULT/opensshserver.txt
-VOLUME /sys/fs/cgroup /run /tmp
 RUN ssh-keygen -A
 RUN systemctl enable sshd.service
 

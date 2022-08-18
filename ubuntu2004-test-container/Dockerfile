@@ -61,7 +61,6 @@ RUN apt-get update -y && \
 RUN ln -s /lib/systemd/systemd /sbin/init
 RUN rm /etc/apt/apt.conf.d/docker-clean
 RUN locale-gen en_US.UTF-8
-VOLUME /sys/fs/cgroup /run/lock /run /tmp
 
 COPY requirements.txt /usr/share/container-setup/requirements.txt
 RUN pip3 install --disable-pip-version-check --no-cache-dir -r /usr/share/container-setup/requirements.txt
