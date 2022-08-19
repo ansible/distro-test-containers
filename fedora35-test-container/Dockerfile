@@ -71,8 +71,8 @@ VOLUME /sys/fs/cgroup /run /tmp
 RUN ssh-keygen -A
 RUN systemctl enable sshd.service
 
-COPY requirements.txt /tmp/requirements.txt
-RUN pip3 install --disable-pip-version-check --no-cache-dir -r /tmp/requirements.txt && rm /tmp/requirements.txt
+COPY requirements.txt /usr/share/container-setup/requirements.txt
+RUN pip3 install --disable-pip-version-check --no-cache-dir -r /usr/share/container-setup/requirements.txt
 
 ENV container=docker
 CMD ["/usr/sbin/init"]
