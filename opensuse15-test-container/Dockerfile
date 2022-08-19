@@ -60,8 +60,8 @@ RUN ssh-keygen -A
 # explicitly enable the service, opensuse default to disabled services
 RUN systemctl enable sshd.service
 
-COPY requirements.txt /tmp/requirements.txt
-RUN pip install --disable-pip-version-check --no-cache-dir -r /tmp/requirements.txt && rm /tmp/requirements.txt
+COPY requirements.txt /usr/share/container-setup/requirements.txt
+RUN pip install --disable-pip-version-check --no-cache-dir -r /usr/share/container-setup/requirements.txt
 
 ENV container=docker
 CMD ["/sbin/init"]

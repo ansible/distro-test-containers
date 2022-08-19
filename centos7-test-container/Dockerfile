@@ -57,8 +57,8 @@ RUN /usr/bin/sed -i -e 's/^\(Defaults\s*requiretty\)/#--- \1/'  /etc/sudoers
 VOLUME /sys/fs/cgroup /run /tmp
 RUN ssh-keygen -A
 
-COPY requirements.txt /tmp/requirements.txt
-RUN pip install --disable-pip-version-check --no-cache-dir -r /tmp/requirements.txt && rm /tmp/requirements.txt
+COPY requirements.txt /usr/share/container-setup/requirements.txt
+RUN pip install --disable-pip-version-check --no-cache-dir -r /usr/share/container-setup/requirements.txt
 
 ENV container=docker
 CMD ["/usr/sbin/init"]
