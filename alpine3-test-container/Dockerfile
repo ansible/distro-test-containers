@@ -57,8 +57,6 @@ RUN sed -i '/getty/d' /etc/inittab
 # The root account is locked by default, this effectively unlocks it
 RUN echo root:ansible | chpasswd
 
-VOLUME /sys/fs/cgroup /run/lock /run /tmp
-
 COPY requirements.txt /usr/share/container-setup/requirements.txt
 RUN pip3 install --disable-pip-version-check --no-cache-dir -r /usr/share/container-setup/requirements.txt
 

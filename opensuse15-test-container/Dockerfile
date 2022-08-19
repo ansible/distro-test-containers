@@ -55,7 +55,6 @@ rm -f ${LIBSYSTEMD}/basic.target.wants/*;
 # don't create systemd-session for ssh connections
 RUN sed -i /pam_systemd/d /etc/pam.d/common-session-pc
 
-VOLUME /sys/fs/cgroup /run /tmp
 RUN ssh-keygen -A
 # explicitly enable the service, opensuse default to disabled services
 RUN systemctl enable sshd.service
