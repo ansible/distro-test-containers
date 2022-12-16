@@ -59,9 +59,6 @@ RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == system
     rm -f /lib/systemd/system/anaconda.target.wants/*;
 
 RUN localedef --quiet -c -i en_US -f UTF-8 en_US.UTF-8
-# allow ssh-rsa key authentication, which is required for paramiko and EC2 compatibility
-RUN /usr/bin/sed -i -e 's/^PubkeyAcceptedKeyTypes /PubkeyAcceptedKeyTypes ssh-rsa,/' /usr/share/crypto-policies/DEFAULT/openssh.txt
-RUN /usr/bin/sed -i -e 's/^PubkeyAcceptedKeyTypes /PubkeyAcceptedKeyTypes ssh-rsa,/' /usr/share/crypto-policies/DEFAULT/opensshserver.txt
 RUN ssh-keygen -A
 RUN systemctl enable sshd.service
 
