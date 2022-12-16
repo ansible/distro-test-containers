@@ -74,4 +74,4 @@ COPY requirements.txt /usr/share/container-setup/requirements.txt
 RUN pip3 install --disable-pip-version-check --no-cache-dir -r /usr/share/container-setup/requirements.txt
 
 ENV container=docker
-CMD ["/usr/sbin/init"]
+CMD ["/sbin/init"]
