@@ -58,8 +58,8 @@ RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == system
     rm -f /lib/systemd/system/basic.target.wants/*; \
     rm -f /lib/systemd/system/anaconda.target.wants/*;
 
-RUN localedef --quiet -c -i en_US -f UTF-8 en_US.UTF-8
 RUN ssh-keygen -A
+RUN localedef --quiet -c -i en_US -f UTF-8 en_US.UTF-8
 RUN systemctl enable sshd.service
 
 COPY requirements.txt /usr/share/container-setup/requirements.txt
