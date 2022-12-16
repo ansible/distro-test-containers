@@ -1,4 +1,4 @@
-FROM quay.io/fedora/fedora:36
+FROM quay.io/fedora/fedora:37
 
 RUN dnf clean all && \
     dnf -y upgrade && \
