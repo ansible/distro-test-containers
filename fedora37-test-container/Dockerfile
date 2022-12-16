@@ -59,7 +59,6 @@ RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == system
     rm -f /lib/systemd/system/anaconda.target.wants/*;
 
 RUN localedef --quiet -c -i en_US -f UTF-8 en_US.UTF-8
-RUN /usr/bin/sed -i -e 's/^\(Defaults\s*requiretty\)/#--- \1/'  /etc/sudoers
 # pam_loginuid wants to write to /proc/self/loginuid on new ssh session, but can't.
 # https://github.com/lxc/lxc/issues/661#issuecomment-222444916
 # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=726661

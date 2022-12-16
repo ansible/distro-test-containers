@@ -53,7 +53,6 @@ RUN yum clean all && \
         /usr/share/sgml/docbook/xsl-stylesheets* \
         /usr/share/adobe/resources/*
 
-RUN /usr/bin/sed -i -e 's/^\(Defaults\s*requiretty\)/#--- \1/'  /etc/sudoers
 RUN ssh-keygen -A
 
 COPY requirements.txt /usr/share/container-setup/requirements.txt
