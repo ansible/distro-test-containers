@@ -1,4 +1,4 @@
-FROM quay.io/bedrock/alpine:3.16.1
+FROM quay.io/bedrock/alpine:3.17.0
 
 # Keep this as basic as possible, so we properly test against BusyBox
 # Things like tar/zip are needed by unarchive
