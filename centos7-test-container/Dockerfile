@@ -53,11 +53,10 @@ RUN yum clean all && \
         /usr/share/sgml/docbook/xsl-stylesheets* \
         /usr/share/adobe/resources/*
 
-RUN /usr/bin/sed -i -e 's/^\(Defaults\s*requiretty\)/#--- \1/'  /etc/sudoers
 RUN ssh-keygen -A
 
 COPY requirements.txt /usr/share/container-setup/requirements.txt
 RUN pip install --disable-pip-version-check --no-cache-dir -r /usr/share/container-setup/requirements.txt
 
 ENV container=docker
-CMD ["/usr/sbin/init"]
+CMD ["/sbin/init"]

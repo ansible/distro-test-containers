@@ -1,4 +1,4 @@
-FROM quay.io/bedrock/alpine:3.16.1
+FROM quay.io/bedrock/alpine:3.17.0
 
 # Keep this as basic as possible, so we properly test against BusyBox
 # Things like tar/zip are needed by unarchive
@@ -58,7 +58,7 @@ RUN sed -i '/getty/d' /etc/inittab
 RUN echo root:ansible | chpasswd
 
 COPY requirements.txt /usr/share/container-setup/requirements.txt
-RUN pip3 install --disable-pip-version-check --no-cache-dir -r /usr/share/container-setup/requirements.txt
+RUN pip install --disable-pip-version-check --no-cache-dir -r /usr/share/container-setup/requirements.txt
 
 ENV container=docker
 CMD ["/sbin/init"]

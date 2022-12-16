@@ -1,4 +1,4 @@
-FROM quay.io/fedora/fedora:36
+FROM quay.io/fedora/fedora:37
 
 RUN dnf clean all && \
     dnf -y upgrade && \
@@ -59,19 +59,11 @@ RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == system
     rm -f /lib/systemd/system/anaconda.target.wants/*;
 
 RUN localedef --quiet -c -i en_US -f UTF-8 en_US.UTF-8
-RUN /usr/bin/sed -i -e 's/^\(Defaults\s*requiretty\)/#--- \1/'  /etc/sudoers
-# pam_loginuid wants to write to /proc/self/loginuid on new ssh session, but can't.
-# https://github.com/lxc/lxc/issues/661#issuecomment-222444916
-# https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=726661
-RUN /usr/bin/sed -i -e '/pam_loginuid\.so$/ s/required/optional/' /etc/pam.d/*
-# allow ssh-rsa key authentication, which is required for paramiko and EC2 compatibility
-RUN /usr/bin/sed -i -e 's/^PubkeyAcceptedKeyTypes /PubkeyAcceptedKeyTypes ssh-rsa,/' /usr/share/crypto-policies/DEFAULT/openssh.txt
-RUN /usr/bin/sed -i -e 's/^PubkeyAcceptedKeyTypes /PubkeyAcceptedKeyTypes ssh-rsa,/' /usr/share/crypto-policies/DEFAULT/opensshserver.txt
 RUN ssh-keygen -A
 RUN systemctl enable sshd.service
 
 COPY requirements.txt /usr/share/container-setup/requirements.txt
-RUN pip3 install --disable-pip-version-check --no-cache-dir -r /usr/share/container-setup/requirements.txt
+RUN pip install --disable-pip-version-check --no-cache-dir -r /usr/share/container-setup/requirements.txt
 
 ENV container=docker
-CMD ["/usr/sbin/init"]
+CMD ["/sbin/init"]
