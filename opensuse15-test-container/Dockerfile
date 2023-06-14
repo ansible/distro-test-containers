@@ -1,4 +1,4 @@
-FROM quay.io/bedrock/leap:15.4
+FROM quay.io/bedrock/leap:15.5
 
 RUN zypper --non-interactive --gpg-auto-import-keys refresh --services --force && \
     zypper --non-interactive install --force systemd-sysvinit && \
