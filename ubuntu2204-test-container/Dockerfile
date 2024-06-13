@@ -1,4 +1,4 @@
-FROM quay.io/bedrock/ubuntu:jammy-20221130
+FROM quay.io/bedrock/ubuntu:jammy-20240530
 
 RUN apt-get update -y && \
     DEBIAN_FRONTEND=noninteractive apt-get upgrade -y --no-install-recommends && \
