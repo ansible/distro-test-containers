@@ -1,4 +1,4 @@
-FROM quay.io/bedrock/ubuntu:focal-20221130
+FROM quay.io/bedrock/ubuntu:noble-20240530
 
 RUN apt-get update -y && \
     DEBIAN_FRONTEND=noninteractive apt-get upgrade -y --no-install-recommends && \
@@ -36,6 +36,7 @@ RUN apt-get update -y && \
     python3-packaging \
     python3-passlib \
     python3-pip \
+    python3-resolvelib \
     python3-setuptools \
     python3-venv \
     python3-virtualenv \
@@ -63,7 +64,7 @@ RUN rm /etc/apt/apt.conf.d/docker-clean
 RUN locale-gen en_US.UTF-8
 
 COPY requirements.txt /usr/share/container-setup/requirements.txt
-RUN pip install --disable-pip-version-check --no-cache-dir -r /usr/share/container-setup/requirements.txt
+RUN pip install --break-system-packages --disable-pip-version-check --no-cache-dir -r /usr/share/container-setup/requirements.txt
 
 ENV container=docker
 CMD ["/sbin/init"]
