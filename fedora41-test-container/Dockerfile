@@ -1,7 +1,6 @@
 FROM quay.io/fedora/fedora:41
 
 RUN dnf -y upgrade && \
-    dnf -y install coreutils && \
     dnf -y --setopt=install_weak_deps=false install \
     acl \
     bzip2 \
