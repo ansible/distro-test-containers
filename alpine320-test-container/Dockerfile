@@ -1,4 +1,4 @@
-FROM quay.io/bedrock/alpine:3.20.0
+FROM quay.io/bedrock/alpine:3.20.3
 
 # Keep this as basic as possible, so we properly test against BusyBox
 # Things like tar/zip are needed by unarchive
@@ -7,7 +7,6 @@ FROM quay.io/bedrock/alpine:3.20.0
 # sshpass was explicitly omitted as BusyBox timeout causes issues with our connection_ssh tests
 RUN apk add --no-cache openrc \
         acl \
-        apache2 \
         bzip2 \
         curl \
         diffutils \
@@ -34,9 +33,7 @@ RUN apk add --no-cache openrc \
         py3-virtualenv \
         py3-yaml \
         py3-wheel \
-        ruby \
         rsync \
-        subversion \
         sudo \
         tar \
         tzdata \
