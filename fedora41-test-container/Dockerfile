@@ -35,10 +35,7 @@ RUN dnf -y upgrade && \
     python3-setuptools \
     python3-virtualenv \
     rpm-build \
-    rubygems \
-    rubygem-rdoc \
     sshpass \
-    subversion \
     sudo \
     systemd \
     tar \
