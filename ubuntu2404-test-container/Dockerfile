@@ -1,4 +1,4 @@
-FROM quay.io/bedrock/ubuntu:noble-20241009
+FROM public.ecr.aws/docker/library/ubuntu:noble-20241118.1
 
 RUN apt-get update -y && \
     DEBIAN_FRONTEND=noninteractive apt-get upgrade -y --no-install-recommends && \
