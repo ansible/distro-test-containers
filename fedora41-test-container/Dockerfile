@@ -1,4 +1,4 @@
-FROM quay.io/fedora/fedora:41
+FROM public.ecr.aws/docker/library/fedora:41
 
 RUN dnf -y upgrade && \
     dnf -y --setopt=install_weak_deps=false install \
