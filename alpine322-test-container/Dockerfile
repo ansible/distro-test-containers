@@ -1,4 +1,4 @@
-FROM public.ecr.aws/docker/library/alpine:3.21.2
+FROM public.ecr.aws/docker/library/alpine:3.22.1
 
 # Keep this as basic as possible, so we properly test against BusyBox
 # Things like tar/zip are needed by unarchive
