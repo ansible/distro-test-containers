@@ -1,4 +1,4 @@
-FROM public.ecr.aws/docker/library/ubuntu:jammy-20250714
+FROM public.ecr.aws/docker/library/ubuntu:jammy-20250730
 
 RUN apt-get update -y && \
     DEBIAN_FRONTEND=noninteractive apt-get upgrade -y --no-install-recommends && \
