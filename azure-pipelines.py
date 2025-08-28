@@ -1,9 +1,22 @@
 #!/usr/bin/env python3
 
-import json
-import os
+from __future__ import annotations
 
-matrix = {name.split('-')[0]: dict(ContainerName=name) for name in os.listdir(os.getcwd()) if os.path.isdir(name) and name.endswith('-test-container')}
+import json
+import pathlib
+import re
+
+matrix: dict[str, dict[str, str]] = {}
+
+for container in (pathlib.Path(__file__).parent / 'containers').iterdir():
+    for version in container.iterdir():
+        name = re.sub(r'\W', '_', f'{container.name}-{version.name}', flags=re.ASCII)
+
+        matrix[name] = dict(
+            ContainerName=f'{container.name}-test-container',
+            ContainerVersion=version.name,
+            ContainerContext=str(version),
+        )
 
 var_name = 'containers'
 var_value = json.dumps(matrix, sort_keys=True)

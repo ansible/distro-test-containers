@@ -51,9 +51,9 @@ stages:
           - script: >
               containmint merge
               --push
-              --tag "quay.io/ansible/$(ContainerName):$(Build.SourceBranchName)"
-              "quay.io/ansible/scratchpad:$(ContainerName)-$(Build.SourceBranchName)-$(Build.BuildId)-x86_64"
-              "quay.io/ansible/scratchpad:$(ContainerName)-$(Build.SourceBranchName)-$(Build.BuildId)-aarch64"
+              --tag "quay.io/ansible/$(ContainerName):$(ContainerVersion)-$(Build.SourceBranchName)"
+              "quay.io/ansible/scratchpad:$(ContainerName)-$(ContainerVersion)-$(Build.SourceBranchName)-$(Build.BuildId)-x86_64"
+              "quay.io/ansible/scratchpad:$(ContainerName)-$(ContainerVersion)-$(Build.SourceBranchName)-$(Build.BuildId)-aarch64"
             displayName: Merge
             env:
               CONTAINMINT_PASSWORD: $(CONTAINMINT_PASSWORD)
