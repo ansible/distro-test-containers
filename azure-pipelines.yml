@@ -16,8 +16,8 @@ pool:
   vmImage: 'ubuntu-24.04'
 
 variables:
-  python_version: '3.10'
-  containmint_version: '0.2.0'
+  python_version: '3.13'
+  containmint_version: '0.6.0'
   ${{ if ne(variables['Build.Reason'], 'PullRequest') }}:
     push_or_no_login: --push
   ${{ else }}:

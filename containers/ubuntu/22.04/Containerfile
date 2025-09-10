@@ -1,4 +1,4 @@
-FROM public.ecr.aws/docker/library/ubuntu:jammy-20250730
+FROM public.ecr.aws/docker/library/ubuntu:jammy-20250819
 
 RUN apt-get update -y && \
     DEBIAN_FRONTEND=noninteractive apt-get upgrade -y --no-install-recommends && \
@@ -63,5 +63,4 @@ RUN locale-gen en_US.UTF-8
 COPY requirements.txt /usr/share/container-setup/requirements.txt
 RUN pip install --disable-pip-version-check --no-cache-dir -r /usr/share/container-setup/requirements.txt
 
-ENV container=docker
 CMD ["/sbin/init"]
