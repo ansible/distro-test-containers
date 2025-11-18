@@ -1,4 +1,4 @@
-FROM public.ecr.aws/docker/library/fedora:42
+FROM public.ecr.aws/docker/library/fedora:43
 
 RUN dnf -y upgrade && \
     dnf -y --setopt=install_weak_deps=false install \
