@@ -12,6 +12,7 @@ RUN dnf -y upgrade && \
     iproute \
     libffi \
     libffi-devel \
+    libicu76 \
     make \
     openssh-clients \
     openssh-server \
