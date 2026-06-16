@@ -6,6 +6,7 @@ RUN apt-get update -y && \
     acl \
     bzip2 \
     curl \
+    dbus-broker \
     debhelper \
     debianutils \
     devscripts \
@@ -46,6 +47,7 @@ RUN apt-get update -y && \
     sshpass \
     sudo-rs \
     systemd \
+    systemd-sysv \
     tzdata \
     unzip \
     virtualenv \
@@ -56,7 +58,6 @@ RUN apt-get update -y && \
     && \
     rm -rf /var/lib/apt/lists/*
 
-RUN ln -s /lib/systemd/systemd /sbin/init
 RUN rm /etc/apt/apt.conf.d/docker-clean
 RUN locale-gen en_US.UTF-8
 
