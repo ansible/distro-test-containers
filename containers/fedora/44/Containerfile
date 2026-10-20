@@ -4,6 +4,7 @@ RUN dnf -y upgrade && \
     dnf -y --setopt=install_weak_deps=false install \
     acl \
     bzip2 \
+    dbus-broker \
     file \
     findutils \
     gcc \
@@ -53,6 +54,8 @@ RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == system
     rm -f /lib/systemd/system/sockets.target.wants/*initctl*; \
     rm -f /lib/systemd/system/basic.target.wants/*; \
     rm -f /lib/systemd/system/anaconda.target.wants/*;
+
+RUN systemctl enable dbus.socket
 
 RUN ssh-keygen -A
 RUN localedef --quiet -c -i en_US -f UTF-8 en_US.UTF-8
