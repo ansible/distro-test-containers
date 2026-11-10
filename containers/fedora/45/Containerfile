@@ -1,4 +1,4 @@
-FROM public.ecr.aws/docker/library/fedora:44
+FROM public.ecr.aws/docker/library/fedora:45
 
 RUN dnf -y upgrade && \
     dnf -y --setopt=install_weak_deps=false install \
@@ -26,7 +26,6 @@ RUN dnf -y upgrade && \
     python3-httplib2 \
     python3-jinja2 \
     python3-lxml \
-    python3-mock \
     python3-packaging \
     python3-passlib \
     python3-pip \
